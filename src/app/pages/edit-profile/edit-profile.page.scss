@@ -1,0 +1,131 @@
+.page-container {
+  
+    .logo {
+      width: 150px;
+      margin: 0 auto 50px auto;
+    }
+    .profile-wrap{
+      .img-wrap{
+        width: 256px;
+        position: relative;
+        margin: auto;
+        ion-img{
+          width: 256px;
+          max-width: 100%;
+          margin: auto;
+          border-radius: 256px;
+          overflow: hidden;
+        }
+        .camera-btn{
+          position: absolute;
+    z-index: 9;
+    right: 0;
+    top: 75%;
+    transform: translateY(-50%);
+        }
+      }
+      
+    }
+  
+    .form-container {
+      margin-top: 26px;
+      .input-wrap {
+        border: var(--ion-color-primary) 2px solid;
+        border-radius: 15px;
+        --padding-start: 8px;
+        --padding-end: 8px;
+        margin-bottom: 18px;
+  
+        ion-label {
+          --color: var(--ion-color-medium);
+          font-size: 13px;
+          margin-left: 3px;
+          display: inline-flex;
+          align-items: center;
+  
+          i {
+            color: var(--ion-color-primary);
+            margin-right: 6px;
+            font-size: 16px;
+            line-height: 1;
+          }
+        }
+  
+        ion-input {
+          font-size: 14px;
+          font-weight: 400;
+        }
+      }
+  
+      .btn-wrap {
+        margin-top: 16px;
+      }
+    }
+  
+    .or-wrap {
+      width: 64px;
+      margin: 16px auto;
+      text-align: center;
+      position: relative;
+  
+      .circle {
+        width: 36px;
+        height: 36px;
+        background: var(--ion-color-primary);
+        color: var(--ion-color-primary-contrast);
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 36px;
+        font-size: 10px;
+        text-transform: uppercase;
+        font-weight: 100;
+        text-align: center;
+      }
+  
+      .line {
+        width: 64px;
+        min-height: 1px;
+        border-top: var(--ion-color-light) 1px solid;
+        position: absolute;
+        top: 50%;
+        z-index: -1;
+      }
+    }
+  
+    .social-login-wrap {
+      .btn-1 {
+        position: relative;
+        margin-bottom: 16px;
+        i {
+          font-size: 26px;
+          position: absolute;
+          left: 0;
+        }
+        img{
+          position: absolute;
+          height: 26px;
+          left: 0;
+        }
+      }
+    }
+  }
+  
+  ion-footer{
+      box-shadow: var(--app-box-shadow);
+      border-radius: 15px 15px 0 0;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      height: 55px;
+      ion-text{
+          font-size: 14px;
+  
+      }
+      ion-button{
+          margin: 0;
+      --padding-start: 6px;
+      --padding-end: 6px;
+      }
+  }
+  

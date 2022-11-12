@@ -1,0 +1,78 @@
+<ion-tabs (ionTabsDidChange)="getCurrentTab()"  #tabs>
+<div class="tabs-wrapper">
+  <!-- <div class="half-circle"></div> -->
+  <ion-fab vertical="bottom" horizontal="center" slot="fixed" class="btm-btn" *ngIf="userRole == 'user' || !userRole">
+    <ion-fab-button (click)="onClick()" [ngClass]="{'active': activeTab == 'my-vouchers'}"><i class="flaticon-shopping-bag"></i></ion-fab-button>
+  </ion-fab>
+  
+  
+  <ion-tab-bar slot="bottom">
+    <ng-container *ngIf="userRole == 'vendor'">
+      <ion-tab-button tab="vendor-transactions">
+        <i class="flaticon-transaction"></i>
+        <ion-label>Transactions</ion-label>
+      </ion-tab-button>
+      <ion-tab-button tab="vendor-vouchers">
+        <i class="flaticon-money-transfer"></i>
+        <ion-label>Vouchers</ion-label>
+      </ion-tab-button>
+      <ion-tab-button tab="vendor-send-voucher">      <!-- module.ts waali file me jaake path add karna padega tabs ke liye-->
+         <ion-icon name="send-outline"></ion-icon>
+        <ion-label>Send Gift Cards</ion-label>
+      </ion-tab-button>
+      <ion-tab-button tab="profile" *ngIf="authService.loginStatus">
+        <i class="flaticon-user"></i>
+        <ion-label>Account</ion-label>
+      </ion-tab-button>
+      <ion-tab-button tab="login" *ngIf="!authService.loginStatus">
+        <i class="flaticon-user"></i>
+        <ion-label>Account</ion-label>
+      </ion-tab-button>
+    </ng-container>
+
+    <ng-container *ngIf="userRole == 'admin'">
+      <ion-tab-button tab="admin-vouchers">
+        <ion-icon name="albums"></ion-icon>
+        <ion-label>Vouchers</ion-label>
+      </ion-tab-button>
+      <ion-tab-button tab="admin-transactions">
+        <ion-icon name="newspaper"></ion-icon>
+        <ion-label>Transactions</ion-label>
+      </ion-tab-button>
+      <ion-tab-button tab="admin-vendors">
+        <ion-icon name="person-circle"></ion-icon>
+        <ion-label>Vendors</ion-label>
+      </ion-tab-button>
+      </ng-container>
+
+
+
+    <ng-container *ngIf="userRole == 'user'">
+    <ion-tab-button tab="home">
+      <i class="flaticon-homepage"></i>
+      <ion-label>Home</ion-label>
+    </ion-tab-button>
+    <ion-tab-button tab="all-categories">
+      <ion-icon name="apps"></ion-icon>
+      <ion-label>Categories</ion-label>
+    </ion-tab-button>
+    <!-- <ion-tab-button tab="tab3" class="highlight">
+      <i class="flaticon-shopping-bag"></i>
+    </ion-tab-button> -->
+    <ion-tab-button class="hidden"></ion-tab-button>
+    <ion-tab-button tab="notification">
+      <i class="flaticon-bell"></i>
+      <ion-label>Notification</ion-label>
+    </ion-tab-button>
+    <ion-tab-button tab="profile" *ngIf="authService.loginStatus">
+      <i class="flaticon-user"></i>
+      <ion-label>Account</ion-label>
+    </ion-tab-button>
+    <ion-tab-button tab="login" *ngIf="!authService.loginStatus">
+      <i class="flaticon-user"></i>
+      <ion-label>Account</ion-label>
+    </ion-tab-button>
+    </ng-container>
+  </ion-tab-bar>
+</div>
+</ion-tabs>

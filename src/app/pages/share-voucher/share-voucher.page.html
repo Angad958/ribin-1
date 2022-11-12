@@ -1,0 +1,67 @@
+<app-page-header [showBackBtn]="true" title="Urban Studio" [showLine]="true"></app-page-header>
+
+<ion-content>
+  <section class="page-section" *ngIf="voucherData?.payment?.status">
+    <div class="send-card">
+      <ion-text><p><strong>Payment Staus:</strong>  {{voucherData.payment.status}}</p></ion-text>
+    </div>
+  </section>
+
+  <ng-template #generatingVoucher>
+    <div class="generating-voucher" *ngIf="voucherData?.payment?.status == 'pending'">
+      <ion-text>We generating your voucher once completed we will update you or you can try after sometime</ion-text>
+    </div>
+    <div class="generating-voucher" *ngIf="voucherData?.payment?.status == 'failed'">
+      <ion-text>Payment failed, please try again</ion-text>
+    </div>
+  </ng-template>
+  <ng-container *ngIf="voucherData?.payment?.status == 'successful' && voucherData?.dynamicLink; else generatingVoucher">
+  
+  <section class="page-section" *ngIf="voucherData">
+    <ion-text color="primary" class="highlight">Bravo <img src="assets/img/party-icon.png"> Here is your gift card
+    </ion-text>
+    <div class="gift-card">
+      <ion-img img-preloader="{{voucherData.voucherTemplate.imgURL}}"></ion-img>
+      <div class="info">
+        <div class="vendor">
+          <img src="../../../assets/img/vendors/dumy-logo.png">
+        </div>
+        <div class="amt">
+          <ion-text>{{voucherData.voucherAmount  | currency: currencyCode:true:'1.0-0'}}</ion-text>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <section class="page-section">
+  <div class="send-card">
+    <ion-text class="title">Send this card</ion-text>
+    <div class="wrapper">
+      <div class="wrap" (click)="onShareWhatsapp()">
+        <div class="share-btn ion-activatable ripple-parent">
+          <i class="flaticon-whatsapp"></i>
+          <ion-ripple-effect></ion-ripple-effect>
+        </div>
+        <ion-text>Whatsapp</ion-text>
+      </div>
+      <div class="wrap">
+        <div class="share-btn">
+          <i class="flaticon-phone-call"></i>
+        </div>
+        <ion-text>SMS</ion-text>
+      </div>
+
+      <div class="wrap">
+        <div class="share-btn">
+          <i class="flaticon-email"></i>
+        </div>
+        <ion-text>Email</ion-text>
+      </div>
+
+    </div>
+  </div>
+  </section>
+</ng-container>
+ 
+  
+</ion-content>

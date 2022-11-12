@@ -1,0 +1,16 @@
+<div class="items-card-container">
+  <div class="item-card-wrap card-shadow" *ngFor="let item of data; let i = index" (click)="onClick(item)">
+    <div class="item-card">
+      <div class="img-wrap">
+        <ion-img img-preloader="{{item.bannerImage}}" *ngIf="item.bannerImage"></ion-img>
+        <ion-img src="/assets/img/img-preloader.jpg" *ngIf="!item.bannerImage"></ion-img>
+      </div>
+      <div class="text-wrap">
+        <ion-text class="catg" *ngIf="item.categories?.length">
+          <ng-container *ngFor="let catg of item.categories; let i=index">{{catg.name}}</ng-container>
+        </ion-text>
+        <ion-text class="name"> {{item.name.trim()}}</ion-text>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,38 @@
+.items-card-container {
+    .item-card-wrap {
+        width: 245px;
+        flex-basis: 245px;
+        min-width: 245px;
+        padding: 8px;
+        //box-shadow: 0px 2px 12px rgb(203 203 203 / 50%);
+        border-radius: 15px;
+
+        .item-card {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            ion-img {
+                border-radius: 12px;
+                overflow: hidden;
+                width: 64px;
+                height: 64px;
+                object-fit: cover;
+            }
+
+                ion-text {
+                    display: block;
+                    &.catg{
+                        color: var(--ion-color-medium);
+                        font-size: 12px;
+                    }
+                    
+
+                    &.name {
+                        color: var(--ion-color-dark);
+                        font-weight: 500;
+                    }
+                }
+            }
+
+        }
+    }

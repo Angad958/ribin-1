@@ -1,0 +1,77 @@
+<app-page-header [showMenuBtn]="true" title="Cities" [showLine]="true"></app-page-header>
+
+<ion-content>
+ 
+  <div *ngIf="cities; else skeletonText">
+    <ng-container *ngIf="cities.length > 0">
+    <ion-list class="item-list" >
+      <ion-item (click)="editCityModal(item)" *ngFor="let item of cities; let i=index">
+        <ion-label class="ion-text-wrap">
+          <h3>{{item.city}}</h3>
+          <p>{{item.state}}</p>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+  </ng-container>
+    <div class="no-data" *ngIf="cities?.length == 0">
+      No Cities
+    </div>
+  </div>
+
+
+  <ng-template #skeletonText>
+    <div class="custom-list-skeleton">
+      <div class="skeleton-wrap" *ngFor="let items of skeletonArray; let i=index">
+        <ion-skeleton-text animated style="width: 90%"></ion-skeleton-text>
+        <ion-skeleton-text animated style="width: 80%"></ion-skeleton-text>
+        <ion-skeleton-text animated style="width: 70%"></ion-skeleton-text>
+      </div>
+    </div>
+  </ng-template>
+
+  <ion-modal #modal [isOpen]="isModalOpen" [initialBreakpoint]="0.5" [breakpoints]="[0.5]" [backdropDismiss]="false">
+    <ng-template>
+      <ion-header>
+        <ion-toolbar>
+          <ion-title *ngIf="!editCity">Add City</ion-title>
+          <ion-title *ngIf="editCity">Update City</ion-title>
+          <ion-buttons slot="end">
+            <ion-button (click)="closeModal()">Close</ion-button>
+          </ion-buttons>
+        </ion-toolbar>
+      </ion-header>
+        <ion-content>
+          <form #cityForm="ngForm">
+            <ion-list class="item-list">
+              <ion-item>
+                <ion-label>City</ion-label>
+                <ion-input placeholder="City" name="cityName" #cityName="ngModel"
+                  [(ngModel)]="currentCity.city" required></ion-input>
+              </ion-item>
+              <ion-item line="none">
+                <ion-label>State</ion-label>
+                <ion-textarea placeholder="Branch address" name="stateName" #stateName="ngModel"
+                  [(ngModel)]="currentCity.state" required></ion-textarea>
+              </ion-item>
+            </ion-list>
+            <ion-button *ngIf="!editCity" (click)="createCity()" type="submit" class="btn-1 branch-btn"
+              expand="block">
+              Add City
+            </ion-button>
+            <ion-button *ngIf="editCity" (click)="updateCity()" type="submit" class="btn-1 branch-btn"
+              expand="block">
+              Update City
+            </ion-button>
+          </form>
+      </ion-content>
+    </ng-template>
+  </ion-modal>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="createCityModal()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+  </ion-content>
+  

@@ -1,0 +1,8 @@
+<div class="items-card-container">
+  <div class="item-card-wrap" *ngFor="let item of data; let i = index" (click)="onClickItem(item.id)">
+    <div class="item-card">
+      <i [class]="item.icon"></i>
+    <ion-text color="medium"> {{item.name}}</ion-text>
+    </div>
+</div>
+</div>

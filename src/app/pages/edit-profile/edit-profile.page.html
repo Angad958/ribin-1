@@ -1,0 +1,28 @@
+<app-page-header [showBackBtn]="true" title="Edit Profile" [showLine]="true"></app-page-header>
+
+<ion-content>
+  <div class="page-container">
+    <div class="profile-wrap" *ngIf="userData">
+      <div class="img-wrap">
+        <ion-img [src]="profileImage ? profileImage : userData.dP"></ion-img>
+        <ion-fab-button class="camera-btn" (click)="uploadImage()">
+          <ion-icon name="camera"></ion-icon>
+        </ion-fab-button>
+      </div>
+     </div>
+
+    <div class="form-container">
+      <ion-list lines="none">
+        <ion-item class="input-wrap">
+          <ion-label position="stacked"><i class="flaticon-user-1"></i> Name</ion-label>
+          <ion-input [(ngModel)]="userData.name"></ion-input>
+        </ion-item>
+      </ion-list>
+      <div class="btn-wrap">
+        <ion-button class="btn-1" expand="block" shape="round" (click)="updateUser()">
+          Update Profile
+        </ion-button>
+      </div>
+    </div>
+  </div>
+</ion-content>

@@ -1,0 +1,25 @@
+.item-list{
+    ion-item{
+      --padding-start:0;
+      --inner-padding-start:0;
+      ion-thumbnail{
+        --border-radius: 6px;
+      }
+    }
+  }
+  
+  
+  .custom-skeleton {
+    display: flex;
+    gap: 18px;
+    flex-wrap: wrap;
+    flex-direction: column;
+  
+    .skeleton-wrap {
+      ion-skeleton-text {
+        height: 16px;
+      }
+    }
+  }
+  
+  

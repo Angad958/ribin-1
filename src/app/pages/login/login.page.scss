@@ -1,0 +1,124 @@
+.page-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: calc(100% - 32px);
+
+  .logo {
+    width: 150px;
+    margin: 0 auto 50px auto;
+  }
+
+  .form-container {
+    ion-item {
+      --padding-start: 0;
+      --padding-end: 0;
+      margin-bottom: 18px;
+      --inner-padding-end: 0;
+    --inner-padding-start: 0;
+    //--highlight-color-focused: transparent;
+   // --highlight-color-invalid: transparent;
+    //--highlight-color-valid: transparent;
+    //--highlight-height: 0px;
+    .input-wrap {
+      border: var(--ion-color-primary) 2px solid;
+      border-radius: 15px;
+      display: block;
+      width: 100%;
+      padding: 4px;
+      margin-bottom: 1px;
+      ion-label {
+        --color: var(--ion-color-medium);
+        font-size: 13px;
+        margin-left: 3px;
+        display: inline-flex;
+        align-items: center;
+
+        i {
+          color: var(--ion-color-primary);
+          margin-right: 6px;
+          font-size: 16px;
+          line-height: 1;
+        }
+      }
+
+      ion-input {
+        font-size: 14px;
+        font-weight: 400;
+      }
+    }
+    }
+
+    .btn-wrap {
+      margin-top: 16px;
+    }
+  }
+
+  .or-wrap {
+    width: 64px;
+    margin: 16px auto;
+    text-align: center;
+    position: relative;
+
+    .circle {
+      width: 36px;
+      height: 36px;
+      background: var(--ion-color-primary);
+      color: var(--ion-color-primary-contrast);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 36px;
+      font-size: 10px;
+      text-transform: uppercase;
+      font-weight: 100;
+      text-align: center;
+    }
+
+    .line {
+      width: 64px;
+      min-height: 1px;
+      border-top: var(--ion-color-light) 1px solid;
+      position: absolute;
+      top: 50%;
+      z-index: -1;
+    }
+  }
+
+  .social-login-wrap {
+    .btn-1 {
+      position: relative;
+      margin-bottom: 16px;
+      i {
+        font-size: 26px;
+        position: absolute;
+        left: 0;
+      }
+      img{
+        position: absolute;
+        height: 26px;
+        left: 0;
+      }
+    }
+  }
+}
+
+ion-footer{
+    box-shadow: var(--app-box-shadow);
+    border-radius: 15px 15px 0 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 55px;
+    ion-text{
+        font-size: 14px;
+
+    }
+    ion-button{
+        margin: 0;
+    --padding-start: 6px;
+    --padding-end: 6px;
+    }
+}
+

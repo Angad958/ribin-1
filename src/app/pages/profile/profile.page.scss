@@ -1,0 +1,26 @@
+.profile-wrap{
+  text-align: center;
+  ion-img{
+    width: 124px;
+    border-radius: 124px;
+    overflow: hidden;
+    margin: auto;
+  }
+  .name{margin-bottom: 4px;}
+  .user-name{margin-bottom: 4px;}
+}
+
+.profile-menu{
+  ion-list{
+    ion-list-header{
+      font-size: 21px;
+      font-weight: 600;
+    }
+    ion-item{
+      --padding-start:0;
+      --inner-padding-start:0;
+      font-size: 14px;
+
+    }
+  }
+}

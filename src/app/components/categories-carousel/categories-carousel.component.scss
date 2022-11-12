@@ -1,0 +1,31 @@
+.items-card-container {
+  .item-card-wrap {
+    width: 96px;
+    text-align: center;
+    height: 100px;
+    flex-basis: 100px;
+    min-width: 100px;
+    align-items: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 18px;
+    box-shadow: var(--app-card-shadow);
+
+    .item-card {
+      text-align: center;
+
+      i {
+        font-size: 36px;
+        display: block;
+        line-height: 0;
+        margin-bottom: 4px;
+      }
+
+      ion-text {
+        font-size: 14px;
+      }
+    }
+
+  }
+}

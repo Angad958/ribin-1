@@ -1,0 +1,70 @@
+.payment-card{
+    background: #f1f1f1;
+    border-radius: 16px;
+    padding: 10px;
+    font-size: 16px;
+    font-weight: 500;
+    table{
+        width: 100%;
+        td{
+            padding: 8px 4px;
+            font-weight: 500;
+            &.left{
+                color: var(--ion-color-dark);
+                opacity: 0.5;
+                
+            }
+            &.right{
+                text-align: right;
+                color: var(--ion-color-primary);
+            }
+        }
+        tfoot{
+            border-top: #bbb 1px solid;
+            td{
+                padding-top: 24px;
+            }
+        }
+        tbody{
+            tr:last-child{
+                td{
+                    padding-bottom: 24px;
+                }
+            }
+        }
+    }
+}
+
+.product-wrap{
+    border-radius: 16px;
+    overflow: hidden;
+}
+
+.btn-footer{
+    background: var(--ion-color-primary);
+    height: auto;
+    padding: 16px;
+    color: #fff;
+   // padding: 12px 8px;
+    .btn-wrapper{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        ion-button{
+            --box-shadow: none;
+    font-size: 14px;
+    border-radius: 12px;
+        }
+    }
+}
+
+.payment-wrap{
+    border: var(--ion-color-medium) 1px solid;
+    border-radius: 4px;
+    box-shadow: var(--app-box-shadow);
+    padding: 12px;
+    &.active{
+        border-color: var(--ion-color-primary);
+        color: var(--ion-color-primary);
+    }
+}

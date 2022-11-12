@@ -1,0 +1,54 @@
+<app-page-header [showLogo]="true" [showLine]="true" [showBackBtn]="true"></app-page-header>
+
+<ion-content class="">
+  <section>
+    <div class="items-card-container">
+      <div class="item-card-wrap active-catg" *ngIf="categoryData" >
+        <div class="item-card" >
+          <i [class]="categoryData.icon"></i>
+          <ion-text color="medium"> {{categoryData.name}}</ion-text>
+        </div>
+      </div>
+      <ng-container *ngIf="subCategories; else skeletonText">
+        <div class="item-card-wrap" *ngFor="let item of subCategories; let i = index">
+          <div class="item-card" (click)="onClickSubCategory(item)" [ngClass]="{'active': activeSubCatg == item}">
+            <i [class]="item.icon"></i>
+            <ion-text color="medium"> {{item.name}}</ion-text>
+          </div>
+        </div>
+      </ng-container>
+      <ng-template #skeletonText>
+        <div class="custom-skeleton">
+          <ion-skeleton-text animated></ion-skeleton-text>
+          <ion-skeleton-text animated></ion-skeleton-text>
+          <ion-skeleton-text animated></ion-skeleton-text>
+          <ion-skeleton-text animated></ion-skeleton-text>
+        </div>
+      </ng-template>
+    </div>
+
+  </section>
+
+  <section class="section-container">
+    <ng-container *ngIf="vendors; else skeletonTextBig">
+
+      <ng-container *ngIf="vendors.length > 0;else noData">
+        <app-vendor-thumb-one *ngFor="let item of vendors; let i=index" [data]="item"></app-vendor-thumb-one>
+      </ng-container>
+      <ng-template #noData>
+        <div class="no-data">
+          No Data
+        </div>
+      </ng-template>
+
+    </ng-container>
+    <ng-template #skeletonTextBig>
+      <div class="custom-skeleton-big">
+        <ion-skeleton-text animated></ion-skeleton-text>
+        <ion-skeleton-text animated></ion-skeleton-text>
+        <ion-skeleton-text animated></ion-skeleton-text>
+        <ion-skeleton-text animated></ion-skeleton-text>
+      </div>
+    </ng-template>
+  </section>
+</ion-content>

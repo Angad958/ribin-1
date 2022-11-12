@@ -1,0 +1,26 @@
+<app-page-header [showBackBtn]="true" title="Send Gift Cards" [showLine]="true"></app-page-header>
+
+
+<ion-content>
+<h1 style="text-align: center">IMAGE</h1> <!-- image comes here-->
+ <br>
+   <div class="amt-input-wrap">
+ <ion-item counter="true">
+    <ion-label position="floating"> Amount  <span>&#x20B9;</span></ion-label>
+    <ion-input type="number" [(ngModel)]="voucherAmount" max="50000"></ion-input>
+  </ion-item>
+  <br>
+  
+  <ion-item counter="true">
+    <ion-label position="floating"> Phone Number</ion-label>
+     <ion-input type="tel" [(ngModel)]="PhoneNumber" maxlength="10" [clearInput]="true" pattern="[0-9]*"></ion-input>
+  </ion-item>
+  
+</div>
+
+<br>
+<ion-button (click)="presentAlert()" expand="block" (click)="onShareWhatsapp()" >Send</ion-button>
+
+
+
+</ion-content>

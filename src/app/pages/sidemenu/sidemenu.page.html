@@ -1,0 +1,46 @@
+<ion-menu side="start" menuId="first" contentId="main" type="push" swipe-gesture="false" (ionWillOpen)="menuWillOpen()">
+  <ion-header>
+    <ion-toolbar color="primary">
+      <ion-title>Ribin</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content>
+    <ion-list>
+      <ion-menu-toggle auto-hide="true"  *ngIf="!loginStatus" (click)="login()">
+        <ion-item>
+          <ion-icon name="log-in" slot="start"></ion-icon>
+          <ion-label>Login</ion-label>
+        </ion-item>
+      </ion-menu-toggle>
+      <ion-menu-toggle auto-hide="true" *ngIf="loginStatus" (click)="logout()">
+        <ion-item>
+          <ion-icon name="log-out" slot="start"></ion-icon>
+          <ion-label>Logout</ion-label>
+        </ion-item>
+      </ion-menu-toggle>
+
+      <!--admin menu-->
+      <ng-container *ngIf="userRole == 'admin'">
+      <ion-menu-toggle auto-hide="true" [routerLink]="['/cities-list']">
+        <ion-item>
+          <ion-label>Cities</ion-label>
+        </ion-item>
+      </ion-menu-toggle>
+      <ion-menu-toggle auto-hide="true" [routerLink]="['/categories-list']">
+        <ion-item>
+          <ion-label>Categories</ion-label>
+        </ion-item>
+      </ion-menu-toggle>
+    </ng-container>
+      <!--admin menu-->
+      <!-- <ion-menu-toggle auto-hide="true" >
+        <ion-item [routerLink]="['/test']">
+          <ion-label>Test</ion-label>
+        </ion-item>
+      </ion-menu-toggle> -->
+
+
+
+    </ion-list>
+  </ion-content>
+</ion-menu>

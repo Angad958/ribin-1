@@ -1,0 +1,35 @@
+<app-page-header [showBackBtn]="true" [showLogo]="true" [showLine]="true"></app-page-header>
+
+<ion-content>
+  <ng-container *ngIf="loginStatus;else loginTemplate">
+
+  <div class="gift-card-container" *ngIf="voucherData">
+    <div class="surprise" [hidden]="!showSurprise">
+      <div id="party1" class="party"></div>
+      <ion-text color="primary" class="highlight">Yay 🎉 You've got a Gift Card!</ion-text>
+    </div>
+    <div class="form-error" *ngIf="errorMessage">
+      {{errorMessage}}
+    </div>
+    <div class="gift-wrapper bottom">
+      <ion-button *ngIf="!showHome" (click)="reedemVoucher()" expand="block" shape="round" class="btn-1 primary-light">
+        Tap/Swipe the ribbon to open it
+      </ion-button>
+      <ion-button *ngIf="showHome" [routerLink]="['']" expand="block" shape="round" class="btn-1">
+        Go to Home
+      </ion-button>
+      <ion-img src="/assets/img/cards/gift-card.png"></ion-img>
+    </div>
+  </div>
+
+</ng-container>
+<ng-template #loginTemplate>
+  <div class="login-template">
+    <p>Please login to reedem voucher</p>
+    <ion-button (click)="doLogin()" fill="clear" shape="round">
+      Login
+    </ion-button>
+  </div>
+</ng-template>
+
+</ion-content>

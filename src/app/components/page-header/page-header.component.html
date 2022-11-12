@@ -1,0 +1,18 @@
+<ion-header mode="ios">
+  <ion-toolbar>
+  <ion-buttons slot="start">
+    <ion-menu-button color="dark" *ngIf="!showBackBtn">
+      <i class="flaticon-align-left"></i>
+    </ion-menu-button>
+    <ion-back-button defaultHref="tabs" *ngIf="showBackBtn" color="dark" mode="md"></ion-back-button>
+  </ion-buttons>
+  <ion-title *ngIf="showLogo"><img class="logo" src="/assets/img/logo.png"></ion-title>
+  <ion-title *ngIf="title">{{title}}</ion-title>
+  
+    <ion-buttons slot="end">
+    <img *ngIf="!authService.loginStatus" class="profile-pic" (click)="onClickProfile()" src="/assets/img/user-icon.png">
+    <img *ngIf="authService.loginStatus" class="profile-pic" (click)="onClickProfile()" [src]="profilePic">
+    </ion-buttons>
+  </ion-toolbar>
+  <span class="line" *ngIf="showLine"></span>
+</ion-header>

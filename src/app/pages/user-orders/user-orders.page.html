@@ -1,0 +1,44 @@
+<app-page-header [showBackBtn]="true" title="My Orders" [showLine]="true"></app-page-header>
+
+<ion-content>
+<div class="orders-wrapper">
+  <ng-container *ngIf="orders; else skeletonText">
+   <ng-container *ngIf="orders.length > 0; else noData">
+   
+  <div [routerLink]="['/share-voucher/', order.id]" class="order-wrap ion-activatable ripple-parent" *ngFor="let order of orders; let i=index">
+    <ion-ripple-effect></ion-ripple-effect>
+    <div class="img-wrap">
+      <ion-img img-preloader="{{order.voucherTemplate.imgURL}}"></ion-img>
+    </div>
+    <div class="det-wrap">
+       <ion-text class="vendor-name">{{order.vendorDetails.name}} | {{order.voucherTemplate.label}} Voucher</ion-text>
+       <ion-chip class="amt">
+        <ion-label >{{order.voucherAmount | currency: currenyCode:true:'1.0-0'}}</ion-label>
+      </ion-chip>
+       <ion-chip *ngIf="order.payment?.status" [ngClass]="{'pending': order.payment.status == 'pending', 'successful': order.payment.status == 'successful','failed': order.payment.status == 'failed'}">
+        <ion-label >{{order.payment.status}}</ion-label>
+      </ion-chip>
+    </div>
+  </div>
+</ng-container>
+<ng-template #noData>
+  <div class="no-data">
+    No Orders
+  </div>
+</ng-template>
+</ng-container>
+<ng-template #skeletonText>
+  <div class="custom-skeleton">
+    <div class="skeleton-wrap" *ngFor="let item of skeletonTextArray; let i=index">
+      <div class="skeleton-img">
+        <ion-skeleton-text animated class="img"></ion-skeleton-text>
+      </div>
+      <div class="skeleton-text">
+        <ion-skeleton-text animated class="text" style="width: 90%"></ion-skeleton-text>
+        <ion-skeleton-text animated class="text" style="width: 80%"></ion-skeleton-text>
+      </div>
+    </div>
+  </div>
+</ng-template>
+</div>
+</ion-content>

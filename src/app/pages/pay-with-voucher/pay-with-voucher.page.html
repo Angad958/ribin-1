@@ -1,0 +1,103 @@
+<app-page-header [showBackBtn]="true" [showLogo]="true" [showLine]="true"></app-page-header>
+
+<ion-content>
+  <ng-container *ngIf="voucherData">
+
+
+    <section class="page-section">
+      <div class="gift-card">
+        <ion-img img-preloader="{{voucherData.voucherTemplate.imgURL}}"></ion-img>
+        <div class="info">
+          <div class="vendor">
+            <img src="../../../assets/img/vendors/dumy-logo.png">
+          </div>
+          <div class="amt">
+            <ion-text>{{voucherData.voucherAmount | currency:currencyCode:true:'1.0-0'}}</ion-text>
+          </div>
+        </div>
+      </div>
+
+      <div class="remaing-bal">
+        <div>
+          <ion-text class="txt1">Remaining Balance</ion-text>
+        </div>
+        <div>
+          <ion-text class="txt2">{{voucherData.remainingBalance | currency:currencyCode:true:'1.0-0'}}</ion-text>
+        </div>
+      </div>
+    </section>
+   <ng-container *ngIf="!isPaid; else paidTemplate">
+    
+    <div class="send-card">
+      <ion-text class="title">Pay from your card</ion-text>
+    </div>
+
+    <section class="">
+      <ion-input type="number" class="input-feild" placeholder="Enter Amount" [(ngModel)]="paidAmount"></ion-input>
+      <ion-text color="danger" *ngIf="paidAmount > voucherData.remainingBalance">Cannot pay more than voucher balance</ion-text>
+    </section>
+
+    <section class="section-container">
+      <ion-button [disabled]="!paidAmount" id="open-modal" expand="block" shape="round" class="btn-1" *ngIf="!selectedBranch" [disabled]="paidAmount > voucherData.remainingBalance">
+        Select Branch
+      </ion-button>
+      <ion-button (click)="onConfirmPay()" expand="block" shape="round" class="btn-1" [disabled]="paidAmount > voucherData.remainingBalance" *ngIf="selectedBranch">
+        Pay
+      </ion-button>
+     
+    </section>
+  </ng-container>
+
+  <ng-template #paidTemplate>
+    <section class="page-section payment-status">
+      <div class="">
+        <ion-text color="success" >
+          <h4>Paid Successfully</h4>
+        </ion-text>
+        <ion-text>
+          <p><strong>TransactionID#:</strong>{{transactionID}}</p>
+        </ion-text>
+        <ion-button [routerLink]="['/']" expand="block" shape="round" class="btn-1" *ngIf="selectedBranch">
+          Go To Home
+        </ion-button>
+      </div>
+      <!-- <div class="" *ngIf="transactionData.status == 'delined'">
+        <ion-text color="danger" >
+          <h4>Payment deline by vendor, you will get refiund to voucher</h4>
+        </ion-text>
+        <ion-button [routerLink]="['']" expand="block" shape="round" class="btn-1" *ngIf="selectedBranch">
+          Go To Home
+        </ion-button>
+      </div>
+      <div class="pending-status" *ngIf="transactionData.status == 'pending'">
+        <ion-text>
+          <ion-spinner name="lines"></ion-spinner> Waiting for payment approval
+        </ion-text>
+      </div> -->
+
+    </section>
+  </ng-template>
+
+  
+  </ng-container>
+
+  <!-- modal-->
+<ion-modal #modal trigger="open-modal" [initialBreakpoint]="0.75" [breakpoints]="[0, 0.25, 0.5, 0.75]" (ionModalWillPresent)="modalWillPresent()">
+  <ng-template>
+    <ion-content>
+      <div class="branches-wrapper" *ngIf="branches">
+        <ion-text>Selected Branches</ion-text>
+        <div class="branch-wrap" [ngClass]="{'active': item == selectedBranch}" (click)="selectBranch(item)" *ngFor="let item of branches; let i=index">
+          <p class="name">{{item.name}}</p>
+          <p class="address-1"><i class="flaticon-location"></i>Address</p>
+          <p class="address-2">{{item.address}}</p>
+        </div>
+      </div>
+      <ion-button (click)="closeModal()" expand="block" shape="round" class="btn-1">
+        Submit
+      </ion-button>
+    </ion-content>
+  </ng-template>
+</ion-modal>
+<!--modal-->
+</ion-content>

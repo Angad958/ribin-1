@@ -1,0 +1,48 @@
+<app-page-header [showBackBtn]="true" [showLogo]="true" [showLine]="true"></app-page-header>
+<ion-content *ngIf="cartData">
+  <section class="product-wrap page-section">
+   <ion-img img-preloader="{{cartData.voucherTemplate.imgURL}}"></ion-img>
+  </section>
+ 
+  <section class="payment-card page-section">
+    <table>
+      <tbody>
+        <tr>
+          <td class="left">Gift Card Amount</td>
+          <td class="right">{{cartData.voucherAmount | currency: currenyCode:true:'1.0-0'}}</td>
+        </tr>
+        <tr>
+         <td class="left">Tax</td>
+         <td class="right">{{tax | currency: currenyCode:true:'1.0-0'}}</td>
+       </tr>
+       
+      </tbody>
+      <tfoot>
+       <tr>
+         <td class="left">Total</td>
+         <td class="right">{{cartData.voucherAmount + tax | currency: currenyCode:true:'1.0-0'}}</td>
+       </tr>
+      </tfoot>
+    </table>
+  </section>
+
+  <section class="payment-methods page-section">
+    <div class="payment-wrap" (click)="selectPaymentMethod(item)" *ngFor="let item of paymentMethods; let i=index" [ngClass]="{'active': item == selectedPaymentMethod}">
+      {{item}}
+    </div>
+
+  </section>
+
+ </ion-content>
+ 
+ <ion-footer class="btn-footer" *ngIf="cartData">
+   <div class="btn-wrapper">
+     <div class="left">
+      {{cartData.voucherAmount + tax | currency: currenyCode:true:'1.0-0'}}</div>
+     <div class="rgt">
+       <ion-button (click)="onCheckout()" color="light" class="checkout-btn" [disabled]="!selectedPaymentMethod">
+         Checkout
+       </ion-button>
+     </div>
+   </div>
+ </ion-footer>

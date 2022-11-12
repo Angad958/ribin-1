@@ -1,0 +1,16 @@
+
+
+<ion-content>
+<div class="body-container">
+  <div class="wrapper">
+    <div class="white-wraper">
+      <ion-text>Are you sure you want to pay {{amount | currency:currencyCode:true:'1.0-0'}} from your Gift Card?</ion-text>
+      <ion-img src="assets/img/pay-confirm.png"></ion-img>
+    </div>
+    <div class="btn-wrapper">
+      <ion-button (click)="dismissModal('confirm')" expand="block" shape="round" class="btn-1">Confirm</ion-button>
+      <ion-button (click)="dismissModal('cancel')" expand="block" shape="round" class="btn-1" color="dark">Cancel</ion-button>
+    </div>
+  </div>
+</div>
+</ion-content>

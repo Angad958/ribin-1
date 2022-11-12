@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "348297846154",
+    "firebase_url": "https://bwi-1024-default-rtdb.firebaseio.com",
+    "project_id": "bwi-1024",
+    "storage_bucket": "bwi-1024.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:348297846154:android:244a4122d5d7bfced33c73",
+        "android_client_info": {
+          "package_name": "com.app.ribin"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "348297846154-602eotbtlk0sc0amqj08c7devuvkq2hq.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.app.ribin",
+            "certificate_hash": "80ae6f1d1f125430a1a98bae0dbde2ba55f92236"
+          }
+        },
+        {
+          "client_id": "348297846154-2se8n2f676td55tlefsmq24hfqmsklan.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDnoCEmm_3Pd27-oGqAKsWjRYMT8ZMX86M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "348297846154-2se8n2f676td55tlefsmq24hfqmsklan.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "348297846154-8hkmv7bmvrnl64nac3eah21l30kt3v05.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.app.ribin"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

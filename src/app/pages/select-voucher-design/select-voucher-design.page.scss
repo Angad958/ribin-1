@@ -1,0 +1,75 @@
+.wrapper {
+  margin: -12px;
+
+  .wrap {
+    line-height: 0;
+    padding: 12px;
+
+    .card {
+      border-radius: 15px;
+      overflow: hidden;
+      outline: transparent 5px solid;
+      position: relative;
+
+      &.active {
+        outline-color: var(--ion-color-success);
+      }
+
+      .info {
+        display: flex;
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        padding: 12px;
+        align-items: center;
+        justify-content: space-between;
+
+        .vendor {
+          img {
+            width: 75px;
+          }
+        }
+
+        .amt {
+          ion-text {
+            color: #fff;
+            font-size: 12px;
+          }
+        }
+      }
+    }
+  }
+}
+
+.input-feild {
+  height: 124px;
+}
+
+.page-section {
+  ion-text {
+    text-align: center;
+    display: block;
+    margin-bottom: 6px;
+  }
+}
+
+.custom-skeleton {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  flex-direction: column;
+
+  .skeleton-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+
+    ion-skeleton-text {
+      width: 100%;
+      min-width: 100px;
+      height: 100px;
+      border-radius: 15px;
+    }
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "name": "ribin-app-demo-new",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

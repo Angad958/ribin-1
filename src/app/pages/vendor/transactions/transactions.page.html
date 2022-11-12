@@ -1,0 +1,99 @@
+<app-page-header [showMenuBtn]="true" title="Transactions" [showLine]="true"></app-page-header>
+
+<ion-content>
+  <ng-container *ngIf="transactions; else skeletonText">
+    <ng-container *ngIf="transactions.length > 0">
+      <div class="segment-bar">
+        <ion-segment (ionChange)="segmentChanged($event)" [(ngModel)]="segmentModel" value="overview">
+          <ion-segment-button value="overview">
+            <ion-label>Overview</ion-label>
+          </ion-segment-button>
+          <ion-segment-button value="total">
+            <ion-label>Total</ion-label>
+          </ion-segment-button>
+        </ion-segment>
+      </div>
+
+      <ng-container *ngIf="segmentModel === 'overview'">
+        <ng-container *ngTemplateOutlet="overview"></ng-container>
+      </ng-container>
+      <ng-container *ngIf="segmentModel === 'total'">
+        <ng-container *ngTemplateOutlet="total"></ng-container>
+      </ng-container>
+    </ng-container>
+    <div class="no-data" *ngIf="transactions.length == 0">
+      No Transactions
+    </div>
+  </ng-container>
+
+
+
+  <ng-template #overview>
+    <div class="gift-card-container">
+      <ion-list class="item-list" *ngFor="let item of transactions; let i=index">
+        <ion-item>
+          <ion-thumbnail slot="start">
+            <img img-preloader="{{item.voucher.voucherTemplate.imgURL}}" />
+          </ion-thumbnail>
+          <ion-label class="ion-text-wrap">
+            <h3>{{item.voucher.vendorDetails.name}}</h3>
+            <p>{{item.amount | currency: currenyCode:true:'1.0-0'}}</p>
+            <p>{{item.createdAt.toDate() | date: 'dd/MM/yyyy'}}</p>
+          </ion-label>
+        </ion-item>
+      </ion-list>
+    </div>
+
+  </ng-template>
+
+
+  <ng-template #total>
+    <ion-accordion-group (ionChange)="accordionGroupChange($event)">
+      <ion-accordion value="week">
+        <ion-item slot="header" color="light">
+          <ion-label>This Week</ion-label>
+        </ion-item>
+        <div slot="content" class="ion-padding">
+          <ion-text *ngIf="weekTotal; else spinner">
+            <h6>Total for this week : {{weekTotal}}</h6>
+          </ion-text>
+        </div>
+      </ion-accordion>
+      <ion-accordion value="month">
+        <ion-item slot="header" color="light">
+          <ion-label>This Month</ion-label>
+        </ion-item>
+        <div slot="content" class="ion-padding">
+          <ion-text *ngIf="monthTotal; else spinner">
+            <h6>Total for this week : {{monthTotal}}</h6>
+          </ion-text>
+        </div>
+      </ion-accordion>
+      <ion-accordion value="year">
+        <ion-item slot="header" color="light">
+          <ion-label>This Year</ion-label>
+        </ion-item>
+        <div slot="content" class="ion-padding">
+          <ion-text *ngIf="yearTotal; else spinner">
+            <h6>Total for this week : {{yearTotal}}</h6>
+          </ion-text>
+        </div>
+      </ion-accordion>
+    </ion-accordion-group>
+  </ng-template>
+ 
+  <ng-template #spinner>
+    <div class="spinner-wrap">
+      <ion-spinner></ion-spinner>
+    </div>
+  </ng-template>
+  <ng-template #skeletonText>
+    <div class="custom-list-skeleton">
+      <div class="skeleton-wrap" *ngFor="let items of skeletonArray; let i=index">
+        <ion-skeleton-text animated style="width: 90%"></ion-skeleton-text>
+        <ion-skeleton-text animated style="width: 80%"></ion-skeleton-text>
+        <ion-skeleton-text animated style="width: 70%"></ion-skeleton-text>
+      </div>
+    </div>
+  </ng-template>
+</ion-content>

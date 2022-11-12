@@ -1,0 +1,30 @@
+ion-content{
+    --background:transparent;
+    --padding-start: 0;
+    --padding-end: 0;
+    --padding-top:0;
+    --padding-bottom:0;
+}
+
+.body-container{
+    height: 100%;
+    .wrapper{
+        width: 75%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+        .white-wraper{
+            background: #fff;
+            border-radius: 15px;
+            text-align: center;
+            padding: 15px;
+        }
+        .btn-wrapper{
+            margin-top: 15px;
+            ion-button{
+                margin-top: 8px;
+            }
+        }
+    }
+}

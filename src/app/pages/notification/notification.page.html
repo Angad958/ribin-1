@@ -1,0 +1,12 @@
+<app-page-header [showMenuBtn]="true" title="Notication" [showLine]="true"></app-page-header>
+
+<ion-content>
+<ion-list>
+  <ion-item *ngFor="let item of notifications; let i=index" (click)="onClick()">
+    <ion-icon slot="start" name="notifications"></ion-icon>
+    <ion-label>
+      {{item}}
+    </ion-label>
+  </ion-item>
+</ion-list>
+</ion-content>

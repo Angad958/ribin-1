@@ -1,0 +1,40 @@
+.vendor-wrapper{
+    margin-bottom: 18px;
+    box-shadow: var(--app-box-shadow);
+    border-radius: 15px;
+    overflow: hidden;
+    .img-wrap{
+        border-radius: 15px;
+        overflow: hidden;
+    }
+    .detail-wrap{
+        background: #fff;
+    border-radius: 15px;
+    padding: 15px;
+    display: flex;
+    margin-top: -21px;
+    position: relative;
+    position: relative;
+    align-items: center;
+    justify-content: space-between;
+    ion-text{
+        display: block;
+        &.name{}
+        &.address{
+            color: var(--ion-color-medium);
+            font-weight: 400;
+            font-size: 13px;
+            i{
+                color: var(--ion-color-primary);
+                margin-right: 6px;
+            }
+        }
+        &.rating{
+            color: var(--ion-color-medium);
+            font-weight: 400;
+            font-size: 13px;
+            i{color: #ffbc00;}
+        }
+    }
+    }
+}

@@ -1,0 +1,15 @@
+<div class="vendor-wrapper" *ngIf="data" (click)="onClick(data)">
+  <div class="img-wrap">
+    <ion-img img-preloader="{{ data.bannerImage }}" *ngIf="data.bannerImage"></ion-img>
+    <ion-img src="/assets/img/img-preloader.jpg" *ngIf="!data.bannerImage"></ion-img>
+  </div>
+  <div class="detail-wrap">
+    <div class="wrap-lft">
+      <ion-text class="name">{{data.name}}</ion-text>
+      <!-- <ion-text class="address"><i class="flaticon-location-1"></i> Dominos NSP, Pitampura</ion-text> -->
+    </div>
+    <div class="wrap-rgt">
+      <ion-text class="rating"><i class="flaticon-star"></i> (4.5)</ion-text>
+    </div>
+  </div>
+</div>

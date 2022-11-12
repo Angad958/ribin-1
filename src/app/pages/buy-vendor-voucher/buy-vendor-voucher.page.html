@@ -1,0 +1,121 @@
+<app-page-header [showBackBtn]="true" title="Buy Voucher" [showLine]="true"></app-page-header>
+
+<ion-content *ngIf="vendorDetails">
+
+<section class="banner">
+  <div class="wrapper">
+    <img *ngIf="vendorDetails?.bannerImage" img-preloader="{{vendorDetails.bannerImage}}">
+   <div class="overlay">
+    <div class="text-wrap">
+      <ion-text class="catg" *ngIf="vendorDetails?.categories"><ng-container *ngFor="let catg of vendorDetails.categories; let i=index">{{catg.name}}</ng-container></ion-text>
+      <ion-text class="name" *ngIf="vendorDetails?.name">{{vendorDetails.name.trim()}}</ion-text>
+    </div>
+   </div>
+  </div>
+</section>
+
+<!-- <section class="page-section">
+  <ion-text class="title">
+    Select Use
+  </ion-text>
+
+  <ion-button [ngClass]="{'active': selectedUse == 'other'}" (click)="onSelectUse('other')" expand="block" shape="round" class="btn-1 primary-light">
+    Sending it to someone
+  </ion-button>
+  <ion-button [ngClass]="{'active': selectedUse == 'self'}" (click)="onSelectUse('self')" expand="block" shape="round" class="btn-1 primary-light">
+    Using for myself
+  </ion-button>
+</section> -->
+<section class="page-section">
+  <!-- <ion-text class="title">
+    Select Vednor Branch
+  </ion-text> -->
+
+  <ion-button id="open-modal" expand="block" shape="round" class="btn-1 primary-light">
+    Select City
+    <ion-icon name="chevron-down" slot="end"></ion-icon>
+  </ion-button>
+
+  <div class="selected-branches-wrapper" *ngIf="selectedCities">
+    
+    <ion-text><p><strong>Selected Cities</strong></p></ion-text>
+
+    <div class="selected-branches-wrap" *ngFor="let item of selectedCities; let i=index">
+      <p class="name">{{item.city}}</p>
+      <!-- <p class="address-1"><i class="flaticon-location"></i>Address</p> -->
+      <p class="address-2">{{item.state}}</p>
+    </div>
+    <ion-text><strong> Note:</strong> This gift vouchers only applicable on seleted cities </ion-text>
+   
+  </div>
+</section>
+
+<section class="page-section">
+  <ion-text class="title">
+    Select Gift Card amount
+  </ion-text>
+  <div class="gift-card-wrapper">
+    <div class="wrap" *ngFor="let item of vendorDetails.predefineVoucherAmount; let i=index">
+      <ion-button class="btn-1 primary-light" [ngClass]="{'active': voucherAmount == item.value}" (click)="selectGiftCard(item)" expand="block"  shape="round">
+        {{item.value | currency:currencyCode:true:'1.0-0'}}
+      </ion-button>
+    </div>
+    <div class="amt-input-wrap">
+      <span>&#x20B9;</span>
+      <ion-input type="number" [(ngModel)]="voucherAmount" (ionChange)="voucherAmountChange()" ></ion-input>
+    </div>
+    <ion-text color="danger" *ngIf="errorMessage"><p>{{errorMessage}}</p></ion-text>
+  </div>
+</section>
+<section  class="btn-wrapper">
+  <ion-button (click)="onNext()" expand="block" shape="round" class="btn-1" [disabled]="!selectedCities || !voucherAmount || errorMessage">
+    Next
+  </ion-button>
+</section>
+
+<!-- modal-->
+<ion-modal class="inline-modal" #modal trigger="open-modal" [initialBreakpoint]="0.75" [breakpoints]="[0, 0.25, 0.5, 0.75]" (ionModalWillPresent)="modalWillPresent()">
+  <ng-template>
+    <ion-content>
+      <ng-container >
+      <!-- <ion-searchbar mode="ios" placeholder="Search" (click)="modal.setCurrentBreakpoint(0.75)"></ion-searchbar> -->
+    
+      <ion-list  class="branches-list">
+        <ion-item *ngFor="let item of vendorDetails.cities">
+          <ion-label>
+            <h3 *ngIf="item.city">{{item.city}}</h3>
+            <p *ngIf="item.state">{{item.state}}</p>
+          </ion-label>
+          <ion-checkbox slot="start" [(ngModel)]="item.isChecked"></ion-checkbox>
+        </ion-item>
+      </ion-list>
+      <ion-button (click)="selectCity()" expand="block" shape="round" class="btn-1">
+        Submit
+      </ion-button>
+    </ng-container>
+    <ng-template #skeletonText>
+      <div class="custom-skeleton">
+        <ion-skeleton-text animated style="width: 90%"></ion-skeleton-text>
+        <ion-skeleton-text animated style="width: 80%"></ion-skeleton-text>
+        <br>
+        <ion-skeleton-text animated style="width: 90%"></ion-skeleton-text>
+        <ion-skeleton-text animated style="width: 80%"></ion-skeleton-text>
+        <br>
+        <ion-skeleton-text animated style="width: 90%"></ion-skeleton-text>
+        <ion-skeleton-text animated style="width: 80%"></ion-skeleton-text>
+        <br>
+        <ion-skeleton-text animated style="width: 90%"></ion-skeleton-text>
+        <ion-skeleton-text animated style="width: 80%"></ion-skeleton-text>
+        <br>
+        <ion-skeleton-text animated style="width: 90%"></ion-skeleton-text>
+        <ion-skeleton-text animated style="width: 80%"></ion-skeleton-text>
+        <br>
+        </div>
+      </ng-template>
+
+      
+    </ion-content>
+  </ng-template>
+</ion-modal>
+<!--modal-->
+</ion-content>

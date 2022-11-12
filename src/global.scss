@@ -1,0 +1,309 @@
+/*
+ * App Global CSS
+ * ----------------------------------------------------------------------------
+ * Put style rules here that you want to apply globally. These styles are for
+ * the entire app and not just one component. Additionally, this file can be
+ * used as an entry point to import other CSS/Sass files to be included in the
+ * output CSS.
+ * For more information on global stylesheets, visit the documentation:
+ * https://ionicframework.com/docs/layout/global-stylesheets
+ */
+
+/* Core CSS required for Ionic components to work properly */
+@import "~@ionic/angular/css/core.css";
+
+/* Basic CSS for apps built with Ionic */
+@import "~@ionic/angular/css/normalize.css";
+@import "~@ionic/angular/css/structure.css";
+@import "~@ionic/angular/css/typography.css";
+@import '~@ionic/angular/css/display.css';
+
+/* Optional CSS utils that can be commented out */
+@import "~@ionic/angular/css/padding.css";
+@import "~@ionic/angular/css/float-elements.css";
+@import "~@ionic/angular/css/text-alignment.css";
+@import "~@ionic/angular/css/text-transformation.css";
+@import "~@ionic/angular/css/flex-utils.css";
+
+
+ion-content {
+  --padding-start: 16px;
+  --padding-end: 16px;
+  --padding-top: 16px;
+  --padding-bottom: 16px;
+}
+
+* {
+  letter-spacing: 0.5px;
+}
+
+p,h1,h2,h3,h4,h5,h6 {
+  margin: 0;
+}
+
+ion-text {
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.input-error {
+  color: var(--ion-color-danger);
+  position: relative;
+  padding-left: 18px;
+  margin-left: 1px;
+
+  &::before {
+    content: "\f124";
+    font-family: Flaticon;
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+}
+
+// :host {
+//   .item-interactive.item-has-focus {
+//       --highlight-background: none;
+//   }
+// }
+
+// :host {
+//   .item-interactive.ion-valid{
+//     --highlight-background: none;
+//   }
+// }
+
+.ripple-parent {
+  position: relative;
+  overflow: hidden;
+}
+
+.form-error {
+  color: var(--ion-color-danger);
+    position: relative;
+    padding-left: 18px;
+    margin-left: 1px;
+    border: var(--ion-color-danger) 1px solid;
+    display: flex;
+    align-items: center;
+    line-height: 1;
+    padding: 6px 6px 6px 21px;
+    border-radius: 6px;
+    background: rgba(var(--ion-color-danger-rgb), 0.25);
+
+  &::before {
+    content: "\f124";
+    font-family: Flaticon;
+    position: absolute;
+    left: 4px;
+  }
+}
+
+.m-t-26 {
+  margin-top: 26px !important;
+}
+
+.m-t-36 {
+  margin-top: 36px !important;
+}
+
+/*buttons*/
+.sml-btn-1 {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: 0.5px;
+  --box-shadow: none;
+}
+
+.btn-1 {
+  height: 50px;
+  --border-radius: 16px;
+  margin: 0;
+  font-size: 14px;
+  --box-shadow: none;
+
+  &.primary-light {
+    --background: rgba(var(--ion-color-primary-rgb), 0.20);
+    --background-activated: rgba(var(--ion-color-primary-rgb), 0.20);
+    --background-focused: rgba(var(--ion-color-primary-rgb), 0.20);
+    --background-hover: rgba(var(--ion-color-primary-rgb), 0.20);
+    --color: var(--ion-color-primary);
+  }
+}
+
+
+/*forms*/
+.input-feild {
+  background: #fff;
+
+  margin: 0;
+  --padding-top: 12px;
+  --padding-bottom: 12px;
+  --padding-start: 12px;
+  --padding-end: 12px;
+  border-radius: 15px;
+
+  &.shadow {
+    box-shadow: var(--app-box-shadow);
+  }
+}
+
+.section-container {
+  padding: 18px 0;
+
+  .section-title {
+    display: flex;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 16px;
+
+    ion-text {
+      font-weight: 500;
+      font-size: 16px;
+      letter-spacing: 0.5px;
+      text-transform: capitalize;
+
+    }
+
+    ion-button {
+      transform: translateX(26px);
+    }
+
+  }
+}
+
+.items-card-container {
+  display: flex;
+  gap: 14px;
+  flex-wrap: nowrap;
+  overflow: auto;
+  padding: 16px;
+  margin: -16px;
+
+  .item-card-wrap {
+    box-shadow: var(--app-card-shadow);
+    border-radius: 18px;
+
+    .item-card {
+      ion-text {
+        font-size: 14px;
+      }
+    }
+
+  }
+}
+
+section.page-section {
+  margin-bottom: 24px;
+
+  .title {
+    margin-bottom: 16px;
+    display: block;
+    text-align: center;
+  }
+}
+
+.confirm-modal {
+  // --backdrop-opacity: 0;
+  --background: transparent;
+}
+
+.login-template{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 16px;
+  height: 100%;
+}
+
+.custom-list-skeleton {
+  display: flex;
+  gap: 18px;
+  flex-wrap: wrap;
+  flex-direction: column;
+
+  .skeleton-wrap {
+    ion-skeleton-text {
+      height: 16px;
+    }
+  }
+}
+
+
+.item-list{
+  ion-item{
+    --padding-start:0;
+    --inner-padding-start:0;
+    ion-thumbnail{
+      --border-radius: 6px;
+    }
+  }
+}
+
+.item-list-form {
+  ion-item {
+    --padding-start: 0;
+    --inner-padding-start: 0;
+    --inner-padding-top: 12px;
+    --inner-padding-bottom: 12px;
+
+    ion-thumbnail {
+      --border-radius: 6px;
+    }
+
+    ion-label {
+      font-weight: 600;
+      color: red;
+    }
+
+    ion-input,
+    ion-textarea {
+      text-align: right;
+    }
+  }
+}
+
+ion-modal.inline-modal{
+  --border-radius:16px 16px 0 0;
+}
+.spinner-wrap{
+  padding: 16px 0;
+  text-align: center;
+}
+
+.custom-list-skeleton {
+  display: flex;
+  gap: 18px;
+  flex-wrap: wrap;
+  flex-direction: column;
+
+  .skeleton-wrap {
+    ion-skeleton-text {
+      height: 16px;
+    }
+  }
+}
+
+ion-footer {
+  ion-button.btn-1 {
+    --border-radius: 0;
+  }
+}
+ion-toast.custom-toast {
+  --background: #d7e53dc0;
+  --box-shadow: 3px 3px 10px 0 rgba(185, 122, 122, 0.2);
+  --color: inherit;
+}
+    
+ion-toast.custom-toast::part(message) {
+  font-style: bold;
+}
+
+ion-toast.custom-toast::part(button) {
+  border-left: 1px solid #c9b84a9c;
+  color:inherit;
+  font-size: 15px;
+}

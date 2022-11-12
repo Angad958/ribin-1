@@ -1,0 +1,12 @@
+
+.custom-skeleton {
+    display: flex;
+    gap: 12px;
+    flex-wrap: nowrap;
+    ion-skeleton-text{
+        min-width: 100px;
+    height: 100px;
+    border-radius: 15px;
+    }
+}
+  

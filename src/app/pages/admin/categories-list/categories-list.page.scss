@@ -1,0 +1,12 @@
+.custom-skeleton {
+    display: flex;
+    gap: 18px;
+    flex-wrap: wrap;
+    flex-direction: column;
+  
+    .skeleton-wrap {
+      ion-skeleton-text {
+        height: 16px;
+      }
+    }
+  }

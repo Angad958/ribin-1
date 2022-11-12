@@ -1,0 +1,18 @@
+<app-page-header [showBackBtn]="true" title="Order Details" [showLine]="true"></app-page-header>
+
+<ion-content>
+  <section class="page-section" *ngIf="orderData">
+    <ion-text color="primary" class="highlight">Bravo <img src="assets/img/party-icon.png"> Here is your gift card</ion-text>
+    <div class="gift-card">
+      <ion-img [src]="orderData.voucherTemplate.imgURL"></ion-img>
+      <div class="info">
+        <div class="vendor">
+          <img src="../../../assets/img/vendors/dumy-logo.png">
+        </div>
+        <div class="amt">
+          <ion-text>{{orderData.voucherAmount  | currency: currencyCode:true:'1.0-0'}}</ion-text>
+        </div>
+      </div>
+    </div>
+  </section>
+</ion-content>

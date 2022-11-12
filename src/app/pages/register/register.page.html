@@ -1,0 +1,59 @@
+<ion-content>
+
+  <div class="page-container">
+    <div class="logo">
+      <img src="assets/img/logo.png">
+    </div>
+    <div class="form-container">
+      <form (ngSubmit)="onSubmit()" #registrationForm="ngForm">
+        <ion-list lines="none">
+          <ion-item >
+            <div class="input-wrap">
+            <ion-label position="stacked"><i class="flaticon-envelope"></i> Email</ion-label>
+            <ion-input type="email" name="userEmail" #userEmail="ngModel" ngModel required email></ion-input>
+          </div>
+            <ion-text class="input-error" *ngIf="userEmail.touched && !userEmail.valid"><p>Please enter valid email</p></ion-text>
+          </ion-item>
+          <ion-item>
+            <div class="input-wrap">
+            <ion-label position="stacked"><i class="flaticon-padlock"></i> Password</ion-label>
+            <ion-input type="password" name="userPassword" #userPassword="ngModel" ngModel required></ion-input>
+          </div>
+          <ion-text class="input-error" *ngIf="userPassword.touched && !userPassword.valid"><p>Please enter Password</p></ion-text>
+          </ion-item>
+        </ion-list>
+        <ion-text class="form-error" *ngIf="errorMessage">{{errorMessage}}</ion-text>
+        <div class="btn-wrap">
+          <ion-button type="submit" class="btn-1"  expand="block" shape="round" [disabled]="!registrationForm.valid">
+            Register
+          </ion-button>
+        </div>
+      </form>
+    </div>
+
+    <!-- <div class="or-wrap">
+      <div class="circle">or</div>
+      <div class="line"></div>
+    </div> -->
+
+    <!-- <div class="social-login-wrap">
+      <ion-button class="btn-1" expand="block" fill="outline" shape="round" color="dark">
+        <i class="flaticon-apple-logo"></i>
+        Continue with Apple
+      </ion-button>
+      <ion-button class="btn-1" expand="block" fill="outline" shape="round" color="dark">
+        <img src="assets/icon/google.png" alt="">
+        Continue with Goole
+      </ion-button>
+    </div> -->
+  </div>
+
+ 
+</ion-content>
+<ion-footer>
+ <ion-text>Alredy a user? </ion-text>
+  <ion-button size="small" (click)="goToLogin()" expand="block" fill="clear" shape="round">
+   Login Now
+  </ion-button>
+ 
+</ion-footer>

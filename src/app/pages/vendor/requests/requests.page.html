@@ -1,0 +1,21 @@
+<app-page-header [showMenuBtn]="true" title="Requests" [showLine]="true"></app-page-header>
+
+<ion-content>
+<table *ngIf="requests">
+  <thead>
+    <tr>
+      <th>Request</th>
+      <th>Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of requests; let i=index" >
+      <td>{{item.paidByName}} Paid {{item.amount}}</td>
+      <td><ion-button (click)="onStatusChange(item.id)" shape="round" size="small" expand="block" fill="outline" color="medium">
+        <ion-icon name="chevron-down" slot="end"></ion-icon>
+        {{item.status}}
+      </ion-button></td>
+    </tr>
+  </tbody>
+</table>
+</ion-content>

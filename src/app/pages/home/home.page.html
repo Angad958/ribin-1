@@ -1,0 +1,53 @@
+<app-page-header [showLogo]="true"></app-page-header>
+
+<ion-content>
+    <div class="search-wrap">
+        <ion-searchbar mode="ios" inputmode="" placeholder="Search..." autocomplete="" #searchInput id="search-input" (keyup.enter)="goToSearchResults(searchInput.value)"></ion-searchbar>
+    </div>
+    
+    <section class="section-container">
+        <div class="section-title">
+            <ion-text color="dark">Categories</ion-text>
+            <!-- <ion-button  fill="clear" shape="round" size="small" class="sml-btn-1">
+                See All
+            </ion-button> -->
+        </div>
+        <div class="section-wrapper">
+            <app-categories-carousel [data]="categories" *ngIf="categories; else skeletonText"></app-categories-carousel>
+        </div>
+    </section>
+
+    
+    
+
+    <section class="section-container" >
+        <div class="section-title">
+            <ion-text color="dark">Most Popular</ion-text>
+        </div>
+        <div class="section-wrapper">
+            <app-vendor-carousel-one [data]="mostPopular" *ngIf="mostPopular; else skeletonText"></app-vendor-carousel-one>
+        </div>
+    </section>
+
+    <section class="section-container">
+        <div class="section-title">
+            <ion-text color="dark">Recomendations</ion-text>
+            <!-- <ion-button  fill="clear" shape="round" size="small" class="sml-btn-1">
+                See All
+            </ion-button> -->
+        </div>
+        <div class="section-wrapper">
+            <app-vendor-carousel-two [data]="recomendations" *ngIf="recomendations; else skeletonText"></app-vendor-carousel-two>
+        </div>
+    </section>
+
+    <ng-template #skeletonText>
+        <div class="custom-skeleton">
+            <ion-skeleton-text animated></ion-skeleton-text>
+            <ion-skeleton-text animated></ion-skeleton-text>
+            <ion-skeleton-text animated></ion-skeleton-text>
+            <ion-skeleton-text animated></ion-skeleton-text>
+          </div>
+    </ng-template>
+
+</ion-content>

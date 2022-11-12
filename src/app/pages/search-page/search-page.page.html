@@ -1,0 +1,23 @@
+<app-page-header [showBackBtn]="true" title="Search" [showLine]="true"></app-page-header>
+
+<ion-content>
+    <section class="section-container">
+        <ng-container *ngIf="searchResult; else spinner">
+    
+          <ng-container *ngIf="searchResult.length > 0;else noData">
+            <app-vendor-thumb-one *ngFor="let item of searchResult; let i=index" [data]="item"></app-vendor-thumb-one>
+          </ng-container>
+          <ng-template #noData>
+            <div class="no-data">
+              No Result Found
+            </div>
+          </ng-template>
+    
+        </ng-container>
+        <ng-template #spinner>
+            <div class="spinner-wrap">
+              <ion-spinner></ion-spinner>
+            </div>
+          </ng-template>
+      </section>
+</ion-content>

@@ -1,0 +1,47 @@
+<app-page-header [showMenuBtn]="true" title="My Gift Cards" [showLine]="true"></app-page-header>
+
+<ion-content>
+ 
+  <div class="gift-card-container" *ngIf="vouchers; else skeletonText">
+    <ion-grid *ngIf="vouchers.length > 0; else noData">
+      <ion-row *ngFor="let voucher of vouchers; let i=index" (click)="onClick(voucher)">
+        <ion-col size="6">
+          <div class="img-wrap">
+            <ion-img img-preloader="{{voucher.voucherTemplate.imgURL}}"></ion-img>
+          </div>
+        </ion-col>
+        <ion-col size="6">
+          <div class="amt-wrap">
+            <!-- <div> -->
+              <p class="title">Remaining Balance</p>
+              <p class="balance">{{voucher.remainingBalance | currency:currencyCode:true:'1.0-0'}}</p>
+            <!-- </div> -->
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <ng-template #noData>
+      <div class="no-data">
+        No Vouchers
+      </div>
+    </ng-template>
+    
+  </div>
+  <ng-template #skeletonText>
+    <div class="custom-skeleton">
+      <div class="skeleton-wrap">
+        <ion-skeleton-text animated></ion-skeleton-text>
+        <ion-skeleton-text animated></ion-skeleton-text>
+      </div>
+      <div class="skeleton-wrap">
+        <ion-skeleton-text animated></ion-skeleton-text>
+        <ion-skeleton-text animated></ion-skeleton-text>
+      </div>
+      <div class="skeleton-wrap">
+        <ion-skeleton-text animated></ion-skeleton-text>
+        <ion-skeleton-text animated></ion-skeleton-text>
+      </div>
+    </div>
+  </ng-template>
+  </ion-content>
+  

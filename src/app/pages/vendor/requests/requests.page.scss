@@ -1,0 +1,22 @@
+table{
+    width: 100%;
+    thead{
+        background: var(--ion-color-light);
+        th{
+            padding: 6px;
+            text-align: left
+        }
+    }
+    tbody{
+        tr{
+            border-bottom: var(--ion-color-medium) 0.5px solid;
+            &:last-child{
+                border: none;
+            }
+        }
+        td{
+            padding:6px ;
+            font-weight: 400;
+        }
+    }
+}

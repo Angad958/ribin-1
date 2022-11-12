@@ -1,0 +1,65 @@
+<app-page-header [showBackBtn]="true" title="Voucher Templates" [showLine]="true"></app-page-header>
+
+<ion-content>
+  <section class="page-section">
+    <ion-text class="title">Select Gift Card Designs</ion-text>
+    <div class="wrapper" *ngIf="cardDesigns; else skeletonText">
+      <ion-grid class="ion-no-padding">
+        <ion-row>
+          <ion-col size="6" *ngFor="let item of cardDesigns; let i=index">
+            <div class="wrap" (click)="selectDesign(item)">
+              <div class="card" [ngClass]="{'active': selectedVoucerTemplate == item}">
+                <img img-preloader="{{item.imgURL}}">
+                <div class="info">
+                  <div class="vendor">
+                    <img src="../../../assets/img/vendors/dumy-logo.png">
+                  </div>
+                  <div class="amt">
+                    <ion-text *ngIf="routerStateData?.voucherAmount">
+                      {{routerStateData.voucherAmount | currency:currencyCode:true:'1.0-0'}}</ion-text>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+
+    </div>
+    <ng-template #skeletonText>
+      <div class="custom-skeleton">
+        <div class="skeleton-wrap">
+          <ion-skeleton-text animated></ion-skeleton-text>
+          <ion-skeleton-text animated></ion-skeleton-text>
+        </div>
+        <div class="skeleton-wrap">
+          <ion-skeleton-text animated></ion-skeleton-text>
+          <ion-skeleton-text animated></ion-skeleton-text>
+        </div>
+        <div class="skeleton-wrap">
+          <ion-skeleton-text animated></ion-skeleton-text>
+          <ion-skeleton-text animated></ion-skeleton-text>
+        </div>
+      </div>
+    </ng-template>
+
+  </section>
+
+  <section class="page-section" *ngIf="selectedVoucerTemplate?.label == 'Custom'">
+    <ion-text>Enter your custom message</ion-text>
+    <ion-textarea class="input-feild shadow" rows="2" [(ngModel)]="customMessage"
+      placeholder="Write a custom message here"></ion-textarea>
+  </section>
+
+  <section class="page-section" *ngIf="selectedVoucerTemplate && selectedVoucerTemplate?.label !== 'Custom'">
+    <ion-text>Enter your {{selectedVoucerTemplate.label}} message(Optional)</ion-text>
+    <ion-textarea class="input-feild shadow" rows="2" [(ngModel)]="relatedMessage"
+      placeholder="Write a custom message here"></ion-textarea>
+  </section>
+
+  <section class="btn-wrapper m-t-26">
+    <ion-button (click)="onNext()" expand="block" shape="round" class="btn-1" [disabled]="buttonDisabled()">
+      Next
+    </ion-button>
+  </section>
+</ion-content>

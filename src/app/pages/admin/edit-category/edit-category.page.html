@@ -1,0 +1,109 @@
+<app-page-header [showBackBtn]="true" title="Category" [showLine]="true"></app-page-header>
+<ion-content>
+  <div class="catg-wrapper">
+    <ion-text>
+      <h5>Category Detail</h5>
+    </ion-text>
+    <form #catgForm="ngForm">
+      <ion-list class="item-list-form">
+        <ion-item>
+          <ion-label>Name</ion-label>
+          <ion-input placeholder="Category Name" name="categoryName" #categoryName="ngModel"
+            [(ngModel)]="categoryData.name" required></ion-input>
+        </ion-item>
+      </ion-list>
+    </form>
+  </div>
+  <div class="sub-catg-wrapper">
+    <ion-text>
+      <h5>Sub Categories</h5>
+    </ion-text>
+    <ng-container *ngIf="mode =='new';else subCategoriesList">
+      <ion-text>
+        <p>Please save category to create sub categories</p>
+      </ion-text>
+    </ng-container>
+    <ng-template #subCategoriesList>
+      <ng-container *ngIf="subCategories; else skeletonText">
+    
+          <ng-container *ngIf="subCategories.length > 0">
+            <ion-list class="item-list">
+              <ion-item  *ngFor="let item of subCategories; let i=index">
+                <ion-label class="ion-text-wrap">
+                  <h3>{{item.name}}</h3>
+                </ion-label>
+                <ion-button slot="end" fill="clear" color="dark" (click)="updateSubCatgModal(item)">
+                  <ion-icon slot="icon-only" name="create"></ion-icon>
+                </ion-button>
+                <ion-button slot="end" fill="clear" color="dark" (click)="deleteSubCatgAlert(i, item)">
+                  <ion-icon slot="icon-only" name="trash"></ion-icon>
+                </ion-button>
+              </ion-item>
+            </ion-list>
+          </ng-container>
+      </ng-container>
+      <div class="no-data" *ngIf="subCategories?.length==0"> No Subcategories </div>
+    </ng-template>
+  </div>
+
+  <ng-template #skeletonText>
+    <div class="custom-list-skeleton">
+      <div class="skeleton-wrap" *ngFor="let items of skeletonArray; let i=index">
+        <ion-skeleton-text animated style="width: 90%"></ion-skeleton-text>
+        <ion-skeleton-text animated style="width: 80%"></ion-skeleton-text>
+        <ion-skeleton-text animated style="width: 70%"></ion-skeleton-text>
+      </div>
+    </div>
+  </ng-template>
+  <ion-modal #modal [isOpen]="isModalOpen" [initialBreakpoint]="0.5" [breakpoints]="[0.5]" [backdropDismiss]="false">
+    <ng-template>
+      <ion-header>
+        <ion-toolbar>
+          <ion-title *ngIf="!editSubCatg">Add Subcategory</ion-title>
+          <ion-title *ngIf="editSubCatg">Update Subcategory</ion-title>
+          <ion-buttons slot="end">
+            <ion-button (click)="closeModal()">Close</ion-button>
+          </ion-buttons>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content>
+        <form #cityForm="ngForm">
+          <ion-list class="item-list-form">
+            <ion-item>
+              <ion-label>Name</ion-label>
+              <ion-input placeholder="Sub Catgegory Name" name="subCatgName" #subCatgName="ngModel" [(ngModel)]="currentSubCatg.name"
+                required></ion-input>
+            </ion-item>
+          </ion-list>
+          <ion-button *ngIf="!editSubCatg" (click)="createSubCatg()" type="submit" class="btn-1 branch-btn m-t-26"
+            expand="block"> Add Sub Category </ion-button>
+          <ion-button *ngIf="editSubCatg" (click)="updateSubCatg()" type="submit" class="btn-1 branch-btn m-t-26"
+            expand="block"> Update Sub Category </ion-button>
+        </form>
+      </ion-content>
+    </ng-template>
+  </ion-modal>
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed" *ngIf="mode=='edit'">
+    <ion-fab-button (click)="createSubCatgModal()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>
+<ion-footer>
+  <ion-button *ngIf="mode=='new'" (click)="createCategory()" type="submit" class="btn-1" expand="block"
+    [disabled]="!catgForm.valid"> Create </ion-button>
+  <ng-container *ngIf="mode=='edit'">
+    <ion-grid class="ion-no-padding">
+      <ion-row class="ion-no-padding">
+        <ion-col size="6" class="ion-no-padding">
+          <ion-button color="dark" (click)="deleteCategoryAlert()" type="submit" class="btn-1" expand="block"> Delete
+          </ion-button>
+        </ion-col>
+        <ion-col size="6" class="ion-no-padding">
+          <ion-button (click)="updateCategory()" type="submit" class="btn-1" expand="block"
+            [disabled]="!catgForm.valid"> Update </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ng-container>
+</ion-footer>

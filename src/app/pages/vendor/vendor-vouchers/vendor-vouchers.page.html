@@ -1,0 +1,32 @@
+<app-page-header [showMenuBtn]="true" title="vouchers" [showLine]="true"></app-page-header>
+<ion-content>
+  <div class="gift-card-container" *ngIf="vouchers; else skeletonText">
+    <ng-container *ngIf="vouchers.length > 0">
+    <ion-list class="item-list" *ngFor="let item of vouchers; let i=index" >
+      <ion-item>
+        <ion-thumbnail slot="start">
+          <img img-preloader="{{item.voucherTemplate.imgURL}}" />
+        </ion-thumbnail>
+        <ion-label class="ion-text-wrap">
+          <h3>{{item.vendorDetails.name}}</h3>
+          <p>{{item.amount | currency: currenyCode:true:'1.0-0'}}</p>
+          <p>{{item.createdAt.toDate() | date: 'dd/MM/yyyy'}}</p>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+  </ng-container>
+    <div class="no-data" *ngIf="vouchers?.length == 0">
+      No vouchers
+    </div>
+  </div>
+  <ng-template #skeletonText>
+    <div class="custom-list-skeleton">
+      <div class="skeleton-wrap" *ngFor="let items of skeletonArray; let i=index">
+        <ion-skeleton-text animated style="width: 90%"></ion-skeleton-text>
+        <ion-skeleton-text animated style="width: 80%"></ion-skeleton-text>
+        <ion-skeleton-text animated style="width: 70%"></ion-skeleton-text>
+      </div>
+    </div>
+  </ng-template>
+  </ion-content>
+  

@@ -1,0 +1,6 @@
+{
+  "projects": {
+    "default": "bwi-1024",
+    "bwi-1024": "bwi-1024"
+  }
+}
